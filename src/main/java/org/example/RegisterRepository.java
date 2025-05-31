@@ -1,4 +1,6 @@
 package org.example;
 
-public interface RegisterRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface RegisterRepository  extends CrudRepository<Register, Integer> {
 }
