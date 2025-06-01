@@ -1,6 +1,5 @@
 package org.example;
 
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,42 +27,6 @@ public class MyController {
         this.registerService = registerService;
     }
 
-    @GetMapping("/hello")
-    public String sayHello() {
-        return "Привет, Spring Boot!";
-    }
-
-    @GetMapping("/greet")
-    public String greetUser(@RequestParam("name") String name) {
-        return "Привет, " + name + "!";
-    }
-
-    // @GetMapping("/user/{id}")
-    //public String getUserById(@PathVariable("id") Long id) {
-    //     return "Пользователь с ID: " + id;
-    // }
-
-    @GetMapping("/search")
-    public String search(HttpServletRequest request) {
-        String query = request.getParameter("q");
-        return "Поиск: " + query;
-    }
-
-
-    @GetMapping("/image-dynamic")
-    public ResponseEntity<InputStreamResource> getImage() {
-        MediaType contentType = MediaType.IMAGE_JPEG;
-        InputStream in = getClass().getResourceAsStream("/uploads/Untitled.jpg");
-
-        return ResponseEntity.ok()
-                .contentType(contentType)
-                .body(new InputStreamResource(in));
-    }
-
-  /*  @PostMapping("/save")
-    public void saveMrt(@RequestParam("photoName") String photoName, @RequestParam("description") String description, @RequestParam("imagData") String imagData) {
-        photoService.savePhoto(photoName, description, imagData);
-    }*/
 
     @PostMapping("/save2")
     public void saveMrt2(@RequestParam("photoName") String photoName, @RequestParam("description") String description, @RequestParam("imagData") MultipartFile imagData) throws IOException {
